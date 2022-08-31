@@ -21,7 +21,7 @@ function mkdiagram () {
 	if [[ $filename != *".drawio" ]]; then
 		filename="$1.drawio"
 	fi
-	cp ~/.DefaultDiagram.drawio $filename
+	cp DefaultDiagram.drawio $filename
 	open $filename
 }
 function open () {
