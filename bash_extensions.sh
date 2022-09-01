@@ -1,3 +1,9 @@
+#!/bin/bash
+
+###
+### A set of helpful commands to extend bash. See README for details.
+###
+
 function mkdoc () {
 	###
 	### Creates a blank .odt document in the current folder
