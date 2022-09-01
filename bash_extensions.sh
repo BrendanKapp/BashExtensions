@@ -4,11 +4,12 @@ function mkdoc () {
 	###
 	### Usage: mkdoc [document_name]
 	###
+	
 	local filename="$1"
 	if [[ $filename != *".odt" ]]; then
 		filename="$1.odt"
 	fi
-	touch $filename
+	cp $BASH_EXTENSIONS_HOME/DefaultDocument.odt $filename
 	open $filename
 }
 function mkdiagram () {
