@@ -71,10 +71,11 @@ function open () {
 }
 function _check_filename_validity () {
 	###
-	### Local function to check filename validity.
+	### Local function to check filename naming convention validity.
 	###
-	### Returns 0 on success.
-	### Returns 1 on failure and prints an error message.
+	### Returns:
+	### 0 on success.
+	### 1 on failure and prints an error message.
 	###
 	### Usage: _check_filename_validity [file_name]
 	###
@@ -111,6 +112,5 @@ function _check_filename_validity () {
 		echo "ERROR: first character of filename cannot be '_' or '-'!"
 		return 1
 	fi
-	echo "Filename $1 is valid"
 	return 0
 }
