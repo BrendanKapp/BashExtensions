@@ -20,6 +20,10 @@ function mkdoc () {
 		# Appends .odt to filename if it wasn't supplied
 		filename="$1.odt"
 	fi
+	if test -f $filename; then
+		echo "ERROR: File of the same name already exists!"
+		return
+	fi
 	cp $BASH_EXTENSIONS_HOME/DefaultDocument.odt $filename
 	open $filename
 }
@@ -38,6 +42,10 @@ function mkdiagram () {
 	if [[ $filename != *".drawio" ]]; then
 		# Appends .drawio to the filename if it wasn't supplied
 		filename="$1.drawio"
+	fi
+	if test -f $filename; then
+		echo "ERROR: File of the same name already exists!"
+		return
 	fi
 	cp $BASH_EXTENSIONS_HOME/DefaultDiagram.drawio $filename
 	open $filename
