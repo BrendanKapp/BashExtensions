@@ -64,7 +64,7 @@ function open () {
 		libreoffice $1 &
 	elif [[ $1 == *".html" ]]; then
 		firefox $1 & &> /dev/null
-	elif [[ $1 == "." ]]; then
+	elif [[ $1 == "." ]] || [[ $1 == "" ]]; then
 		# if you use "open ." it will open the file explorer at the current location
 		nemo . & &> /dev/null
 	elif [[ $1 == *".drawio" ]]; then
