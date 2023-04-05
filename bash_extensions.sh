@@ -40,14 +40,18 @@ function mkdiagram () {
 		return
 	fi
 	if [[ $filename != *".drawio" ]]; then
-		# Appends .drawio to the filename if it wasn't supplied
-		filename="$1.drawio"
+		# Appends .png to the filename if it wasn't supplied
+		filename="$1.drawio.png"
+	fi
+	if [[ $filename != *".drawio.png" ]]; then
+		# Appends .drawio.png to the filename if it wasn't supplied
+		filename="$1.drawio.png"
 	fi
 	if test -f $filename; then
 		echo "ERROR: File of the same name already exists!"
 		return
 	fi
-	cp $BASH_EXTENSIONS_HOME/DefaultDiagram.drawio $filename
+	cp $BASH_EXTENSIONS_HOME/DefaultDiagram.drawio.png $filename
 	open $filename
 }
 function open () {
@@ -64,6 +68,8 @@ function open () {
 		# if you use "open ." it will open the file explorer at the current location
 		nemo . & &> /dev/null
 	elif [[ $1 == *".drawio" ]]; then
+		drawio $1 & &> /dev/null
+	elif [[ $1 == *".drawio.png" ]]; then
 		drawio $1 & &> /dev/null
 	else
 		echo "Unknown file extension: $1"
