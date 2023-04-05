@@ -14,4 +14,10 @@ source $BASH_EXTENSIONS_HOME/bash_extensions.sh
 Currently available commands:
 - mkdoc [document_name] - makes a Libre Office document.
 - mkdiagram [diagram_name] - makes a Drawio diagram.
-- open [file_name] - opens a filename based on its extension. If `.` is supplied, it will open the file explorer in the current directory.
+- open [file_name] - opens a filename based on its extension. If `.` or nothing is supplied as the argument, it will open the file explorer in the current directory.
+
+## Use with Ubuntu
+
+The default file manager for Ubuntu is Nautilus, whereas Linux Mint is Nemo.
+
+To use the extension with Ubuntu change the sole reference from `nemo` to `nautilus` in the `bash_extensions.sh` file.
