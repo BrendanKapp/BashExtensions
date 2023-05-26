@@ -72,8 +72,24 @@ function open () {
 	elif [[ $1 == *".drawio.png" ]]; then
 		drawio $1 & &> /dev/null
 	else
-		echo "Unknown file extension: $1"
+		echo "ERROR: Unknown file extension: $1"
 	fi
+}
+function catd () {
+	###
+	### Performs cat command on an odt document.
+	###
+	### Usage: catd [file_name]
+	###
+	if [[ $1 != *".odt" ]]; then
+		echo "ERROR: catd only works on .odt documents."
+		return
+	fi
+	unoconv --format=txt $1
+	odt=$1
+	txt=${odt::-4}
+	cat "$txt.txt"
+	rm "$txt.txt"
 }
 function _check_filename_validity () {
 	###
