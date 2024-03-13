@@ -61,17 +61,19 @@ function open () {
 	### Usage: open [file_name]
 	###
 	if [[ $1 == *".odt" ]]; then
-		libreoffice $1 &
+		libreoffice $1 > /dev/null 2>&1 &
 	elif [[ $1 == *".html" ]]; then
-		firefox $1 & &> /dev/null
+		firefox $1 > /dev/null 2>&1 &
 	elif [[ $1 == "." ]] || [[ $1 == "" ]]; then
 		# if you use "open ." it will open the file explorer at the current location
-		nemo . & &> /dev/null
+		nemo . > /dev/null 2>&1 &
 	elif [[ $1 == *".drawio" ]]; then
-		drawio $1 & &> /dev/null
+		drawio $1 > /dev/null 2>&1 &
 	elif [[ $1 == *".drawio.png" ]]; then
-		drawio $1 & &> /dev/null
-	else
+		drawio $1 > /dev/null 2>&1 & 
+  elif [ -d "$1" ]; then
+    nemo $1 > /dev/null 2>&1 &
+  else
 		echo "ERROR: Unknown file extension: $1"
 	fi
 }
