@@ -138,3 +138,27 @@ function _check_filename_validity () {
 	fi
 	return 0
 }
+function remote () {
+	###
+	### Quickly change between display settings for single screen remote access
+	###
+	### Returns:
+	### 0 on success.
+	### 1 on failure and prints an error message.
+	###
+	### Usage: remote --on / remote --off
+	###
+	if [[ $1 == "--on" ]]; then
+		xrandr --output HDMI-0 --off
+		echo "Set to single display"
+		return 0
+	fi
+	if [[ $1 == "--off" ]]; then
+		xrandr --output HDMI-0 --auto
+		xrandr --output HDMI-0 --right-of DP-0
+		echo "Set to double displays"
+		return 0
+	fi
+	echo "ERROR: USAGE: please use --on or --off to set remote display options"
+	return 1
+}
