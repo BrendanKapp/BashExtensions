@@ -70,7 +70,9 @@ function open () {
 	elif [[ $1 == *".drawio" ]]; then
 		drawio $1 > /dev/null 2>&1 &
 	elif [[ $1 == *".drawio.png" ]]; then
-		drawio $1 > /dev/null 2>&1 & 
+		drawio $1 > /dev/null 2>&1 &
+  elif [[ $1 == *".pdf" ]]; then
+    evince $1 > /dev/null 2>&1 &
   elif [ -d "$1" ]; then
     nemo $1 > /dev/null 2>&1 &
   else
